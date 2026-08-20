@@ -1,31 +1,34 @@
+# login
 sa=0
 usa=0
-username="Abhilash"
-password="9618"
-
+user="vamc"
+pwd="0795"
 def dec(func):
     def wrap(*args,**kwargs):
-        print("Application Started")
+        print("Application started")
         func(*args,**kwargs)
     return wrap
 @dec
-def login(username1,password1):
-    if(username1==username and password1==password):
-        global sa
+def login(username,password):
+    global sa,usa
+    if(username==user and password==pwd):
         sa+=1
         print("Login successful")
-    else:
-        global usa
+    elif(username!=user):
         usa+=1
-        if(usa>=3):
-            print("3 attempts completed")
+        if(usa<=3):
+            x=input("Enter username:")
+            login(x,password)
         else:
-            print("Try again")
-login(input(),input())
-login(input(),input())
-login("Abhi","1324")
-login("Abhi","1324")
+            print("No more attempts")
+    else:
+        usa+=1
+        if(usa<=3):
+            x=input("Enter password")
+            login(username,x)
+        else:
+            print("No more attempts")
+login("Abhi","1133")
+print(sa)
 print(usa)
-login("Abhilash","9618")
-
 
